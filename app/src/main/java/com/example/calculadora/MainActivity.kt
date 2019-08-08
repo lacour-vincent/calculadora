@@ -1,10 +1,12 @@
 package com.example.calculadora
 
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -12,6 +14,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar_activity_main))
+
+        button_zero.setOnClickListener {
+            Toast.makeText(this, "0", Toast.LENGTH_SHORT).show()
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
