@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
-        xmlns:tools="http://schemas.android.com/tools" xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto" tools:context=".MainActivity">
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        tools:context=".MainActivity">
 
     <item
             android:id="@+id/action_information"
-            android:title="Information"
+            android:title="@string/menu_information"
             app:showAsAction="ifRoom"
             android:icon="@drawable/ic_info_outline_24dp"/>
 

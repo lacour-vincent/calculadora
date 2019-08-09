@@ -4,7 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -28,7 +28,7 @@ class MainActivity : AppCompatActivity() {
         button_eight.setOnClickListener { addElementToScreen('8') }
         button_nine.setOnClickListener { addElementToScreen('9') }
 
-        button_comma.setOnClickListener { addElementToScreen('.') }
+        button_dot.setOnClickListener { addElementToScreen('.') }
         button_percentage.setOnClickListener { addElementToScreen('%') }
 
         button_add.setOnClickListener { addElementToScreen('+') }
@@ -42,19 +42,19 @@ class MainActivity : AppCompatActivity() {
         button_clear.setOnClickListener { clearScreen() }
     }
 
-    fun addElementToScreen(element: Char) {
+    private fun addElementToScreen(element: Char) {
         textview_screen.text = evaluator.addElement(element)
     }
 
-    fun removeLastElementToScreen() {
+    private fun removeLastElementToScreen() {
         textview_screen.text = evaluator.removeLastElement()
     }
 
-    fun clearScreen() {
+    private fun clearScreen() {
         textview_screen.text = evaluator.clear()
     }
 
-    fun performCalculation() {
+    private fun performCalculation() {
         textview_screen.text = evaluator.eval()
     }
 
@@ -66,11 +66,19 @@ class MainActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.action_information -> {
-                Toast.makeText(this, "Information", Toast.LENGTH_SHORT).show()
+                showInformation()
                 return true
             }
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun showInformation() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle(this.getString(R.string.information_title))
+        builder.setMessage(this.getString(R.string.information_description))
+        builder.setPositiveButton(android.R.string.yes) { _, _ -> }
+        builder.show()
     }
 
 }
