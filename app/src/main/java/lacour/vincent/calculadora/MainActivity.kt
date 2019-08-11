@@ -1,4 +1,4 @@
-package com.example.calculadora
+package lacour.vincent.calculadora
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
