@@ -1,5 +1,6 @@
 package com.example.calculadora
 
+import lacour.vincent.calculadora.Evaluator
 import org.junit.Test
 
 import org.junit.Assert.*
