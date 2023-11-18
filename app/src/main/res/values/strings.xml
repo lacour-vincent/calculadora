@@ -29,6 +29,7 @@
     <string name="information_description">This application was developed as part of the Industrial Computing Course
         (Department of Systems Engineering and Automation - Carlos III - Madrid)
     </string>
+    <string name="information_yes">OK</string>
 
 
 </resources>

@@ -5,57 +5,58 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AlertDialog
-
-import kotlinx.android.synthetic.main.activity_main.*
+import lacour.vincent.calculadora.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
+    private lateinit var binding: ActivityMainBinding
     private val evaluator = Evaluator("")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
         setSupportActionBar(findViewById(R.id.toolbar_activity_main))
 
-        button_zero.setOnClickListener { addElementToScreen('0') }
-        button_one.setOnClickListener { addElementToScreen('1') }
-        button_two.setOnClickListener { addElementToScreen('2') }
-        button_three.setOnClickListener { addElementToScreen('3') }
-        button_four.setOnClickListener { addElementToScreen('4') }
-        button_five.setOnClickListener { addElementToScreen('5') }
-        button_six.setOnClickListener { addElementToScreen('6') }
-        button_seven.setOnClickListener { addElementToScreen('7') }
-        button_eight.setOnClickListener { addElementToScreen('8') }
-        button_nine.setOnClickListener { addElementToScreen('9') }
+        binding.buttonZero.setOnClickListener { addElementToScreen('0') }
+        binding.buttonOne.setOnClickListener { addElementToScreen('1') }
+        binding.buttonTwo.setOnClickListener { addElementToScreen('2') }
+        binding.buttonThree.setOnClickListener { addElementToScreen('3') }
+        binding.buttonFour.setOnClickListener { addElementToScreen('4') }
+        binding.buttonFive.setOnClickListener { addElementToScreen('5') }
+        binding.buttonSix.setOnClickListener { addElementToScreen('6') }
+        binding.buttonSeven.setOnClickListener { addElementToScreen('7') }
+        binding.buttonEight.setOnClickListener { addElementToScreen('8') }
+        binding.buttonNine.setOnClickListener { addElementToScreen('9') }
 
-        button_dot.setOnClickListener { addElementToScreen('.') }
-        button_percentage.setOnClickListener { addElementToScreen('%') }
+        binding.buttonDot.setOnClickListener { addElementToScreen('.') }
+        binding.buttonPercentage.setOnClickListener { addElementToScreen('%') }
 
-        button_add.setOnClickListener { addElementToScreen('+') }
-        button_minus.setOnClickListener { addElementToScreen('-') }
-        button_multiply.setOnClickListener { addElementToScreen('×') }
-        button_divide.setOnClickListener { addElementToScreen('÷') }
+        binding.buttonAdd.setOnClickListener { addElementToScreen('+') }
+        binding.buttonMinus.setOnClickListener { addElementToScreen('-') }
+        binding.buttonMultiply.setOnClickListener { addElementToScreen('×') }
+        binding.buttonDivide.setOnClickListener { addElementToScreen('÷') }
 
-        button_equal.setOnClickListener { performCalculation() }
+        binding.buttonEqual.setOnClickListener { performCalculation() }
 
-        button_delete.setOnClickListener { removeLastElementToScreen() }
-        button_clear.setOnClickListener { clearScreen() }
+        binding.buttonDelete.setOnClickListener { removeLastElementToScreen() }
+        binding.buttonClear.setOnClickListener { clearScreen() }
     }
 
     private fun addElementToScreen(element: Char) {
-        textview_screen.text = evaluator.addElement(element)
+        binding.textviewScreen.text = evaluator.addElement(element)
     }
 
     private fun removeLastElementToScreen() {
-        textview_screen.text = evaluator.removeLastElement()
+        binding.textviewScreen.text = evaluator.removeLastElement()
     }
 
     private fun clearScreen() {
-        textview_screen.text = evaluator.clear()
+        binding.textviewScreen.text = evaluator.clear()
     }
 
     private fun performCalculation() {
-        textview_screen.text = evaluator.eval()
+        binding.textviewScreen.text = evaluator.eval()
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -77,7 +78,7 @@ class MainActivity : AppCompatActivity() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle(this.getString(R.string.information_title))
         builder.setMessage(this.getString(R.string.information_description))
-        builder.setPositiveButton(android.R.string.yes) { _, _ -> }
+        builder.setPositiveButton(this.getString(R.string.information_yes)) { _, _ -> }
         builder.show()
     }
 
